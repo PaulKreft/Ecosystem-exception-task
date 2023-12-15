@@ -14,6 +14,12 @@ public class StudentRepo {
     }
 
     public Optional<Student> findStudentById(String id) {
-        return Optional.ofNullable(students.get(id));
+        Optional<Student> student = Optional.ofNullable(students.get(id));
+
+        if(student.isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        return student;
     }
 }
